@@ -1,6 +1,8 @@
 package com.solvd.travel.document;
 
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class InsurancePolicy {
 
@@ -15,6 +17,8 @@ public class InsurancePolicy {
         this.company=company;
         this.cost=cost;
     }
+
+    public static Set<String> policies = new LinkedHashSet<>();
 
     public Integer getPolicyNumber() {
         return policyNumber;

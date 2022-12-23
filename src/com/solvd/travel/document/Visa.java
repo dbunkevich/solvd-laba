@@ -1,8 +1,20 @@
 package com.solvd.travel.document;
 
+import com.solvd.travel.MainClass;
+import com.solvd.travel.exception.VisaValidException;
+import com.solvd.travel.interfaces.Icheck;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.time.LocalDate;
 
-public class Visa {
+public class Visa implements Icheck{
+
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
+
+    private static final Logger LOGGER = LogManager.getLogger(MainClass.class);
 
     private String number;
     private String type;
@@ -16,6 +28,12 @@ public class Visa {
         this.country=country;
         this.beginDate=beginDate;
         this.endDate=endDate;
+    }
+
+    @Override
+    public void getCheck (){
+
+        LOGGER.info("Visa checking...");
     }
 
     public String getNumber() {
@@ -54,7 +72,10 @@ public class Visa {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate() throws VisaValidException {
+        if (endDate.isBefore(LocalDate.now())){
+            throw new VisaValidException("");
+        }
         this.endDate = endDate;
     }
 }

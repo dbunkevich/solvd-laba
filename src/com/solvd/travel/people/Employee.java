@@ -3,7 +3,7 @@ package com.solvd.travel.people;
 import com.solvd.travel.document.InsurancePolicy;
 import com.solvd.travel.document.Passport;
 
-public class Employee extends Person {
+public final class Employee extends Person {
 
     private String jobTitle;
 

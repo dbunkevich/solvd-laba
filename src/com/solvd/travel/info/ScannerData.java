@@ -1,5 +1,7 @@
 package com.solvd.travel.info;
 
+import com.solvd.travel.exception.NameCheckException;
+
 public class ScannerData {
 
     private static String nameOfClient;
@@ -9,26 +11,15 @@ public class ScannerData {
     private static String budget;
     private static String currency;
 
-    @Override
-    public String toString() {
-        return "ScannerData{}";
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 
     public static String getNameOfClient() {
         return nameOfClient;
     }
 
-    public static void setNameOfClient(String nameOfClient) {
+    public static void setNameOfClient(String nameOfClient){
+        if (nameOfClient.contains("0") | nameOfClient.contains("1") | nameOfClient.contains("2") | nameOfClient.contains("3") | nameOfClient.contains("4") | nameOfClient.contains("5") | nameOfClient.contains("6") | nameOfClient.contains("7") | nameOfClient.contains("8") | nameOfClient.contains("9")){
+            throw new NameCheckException("Name can`t contain a digit !!!");
+        }
         ScannerData.nameOfClient = nameOfClient;
     }
 

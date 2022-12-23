@@ -1,15 +1,18 @@
 package com.solvd.travel.info;
 
+import com.solvd.travel.exception.CurrencyCheckException;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Currency {
 
     private String code;
     private String name;
     private Float rate;
 
-    public Currency(String code, String name){
-        this.code=code;
-        this.name=name;
-    }
+    public static Map<Integer, String> currencies = new TreeMap<>();
 
     public String getCode() {
         return code;
@@ -23,7 +26,10 @@ public class Currency {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws CurrencyCheckException {
+        if (name.length() !=3) {
+            throw new CurrencyCheckException("");
+        }
         this.name = name;
     }
 

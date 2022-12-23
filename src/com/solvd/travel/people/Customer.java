@@ -3,7 +3,7 @@ package com.solvd.travel.people;
 import com.solvd.travel.document.InsurancePolicy;
 import com.solvd.travel.document.Passport;
 
-public class Customer extends Person {
+public final class Customer extends Person {
 
     private String number;
     private Float rate;

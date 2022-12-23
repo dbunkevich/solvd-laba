@@ -1,8 +1,16 @@
 package com.solvd.travel.info;
 
+import com.solvd.travel.MainClass;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public class Address {
+
+    private static final Logger LOGGER = LogManager.getLogger(MainClass.class);
 
     private Integer postalCode;
     private String country;
@@ -16,6 +24,12 @@ public class Address {
         this.city = city;
         this.street = street;
         this.apt = apt;
+    }
+
+    public static List<String> cities = new LinkedList<>();
+
+    public static void printCities(){
+        LOGGER.info(cities);
     }
 
     @Override
